@@ -1,4 +1,4 @@
-# Architecture (draft — design, not deployed production architecture)
+# Architecture (draft â€” design, not deployed production architecture)
 
 ## Goal
 Provide a cloud-agnostic deployment pattern for a stateless API, queue-consuming worker, PostgreSQL, and Redis. Support a shared environment and isolated dedicated tenant stacks while preserving EU tenant data residency.
@@ -24,3 +24,24 @@ Terraform syntax and Kubernetes APIs are portable; managed database semantics, I
 
 ## Residency and failover
 EU tenants must be pinned to EU regions, with EU-only storage, backups, logs, metrics labels, and encryption key location. Enforce region policy in CI and cloud policy. US-West/US-East failover is a separate tenant configuration and must not replicate EU tenant data to the US.
+
+## Architecture diagram
+
+```mermaid
+flowchart TD
+  Dev[Developer] --> CI[Build, Scan, Sign]
+  CI --> GitOps[Reviewed Release Manifest]
+  GitOps --> Gateway[Ingress / Traffic Manager]
+  Gateway --> API[Stateless API Replicas]
+  API --> DB[(PostgreSQL)]
+  API --> Redis[(Redis Queue)]
+  Redis --> Worker[Worker Replicas]
+  API --> Metrics[Metrics and SLO Alerts]
+  Worker --> Metrics
+  subgraph EU[EU Tenant Boundary]
+    EUData[EU Data and Backups]
+  end
+  subgraph US[US Tenant Boundary]
+    West[US-West Primary] -.-> East[US-East Recovery]
+  end
+```
