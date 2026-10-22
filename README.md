@@ -25,8 +25,8 @@ From the repository root:
 
 ```bash
 kind get clusters
-kind create cluster --name deployment-poc # only if you do not already have a suitable cluster
-kubectl cluster-info --context kind-deployment-poc
+kind create cluster --name cap-platform # only if you do not already have a suitable cluster
+kubectl cluster-info --context kind-cap-platform
 kubectl apply -k platform/overlays/local
 kubectl rollout status deployment/api -n platform-poc --timeout=120s
 kubectl get pods,svc,pdb -n platform-poc
