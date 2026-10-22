@@ -1,0 +1,10 @@
+﻿CAP ZERO-DOWNTIME - Fortio Smoke Test
+Date: 2026-10-22
+Target: /readyz
+Configured rate: 10 QPS
+Duration: 10 seconds
+Successful requests: 100
+HTTP 200: 100 (100%)
+Reported failures: 0
+Average latency: 38.517 ms
+Purpose: Local connectivity and smoke test only

@@ -1,0 +1,25 @@
+﻿NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/api      4/4     4            4           27h
+deployment.apps/redis    1/1     1            1           152m
+deployment.apps/worker   1/1     1            1           135m
+
+NAME                               READY   STATUS      RESTARTS   AGE
+pod/api-7474bd5b7f-6smcj           1/1     Running     0          4h10m
+pod/api-7474bd5b7f-mlx7j           1/1     Running     0          4h28m
+pod/api-7474bd5b7f-nrjcz           1/1     Running     0          4h10m
+pod/api-7474bd5b7f-qdq99           1/1     Running     0          4h28m
+pod/fortio-load-1000-d47jc         0/1     Completed   0          4h16m
+pod/fortio-load-1000-r4-btz2n      0/1     Completed   0          4h8m
+pod/fortio-load-2250-c200-vnwxd    0/1     Completed   0          168m
+pod/fortio-load-2250-final-hnqpm   0/1     Completed   0          3h4m
+pod/fortio-load-2250-r4-7cbrj      0/1     Completed   0          3h43m
+pod/fortio-load-2250-r4-v2-5r6x9   0/1     Completed   0          3h39m
+pod/fortio-load-500-ttc5f          0/1     Completed   0          4h18m
+pod/fortio-resource-check-pzrhx    0/1     Completed   0          163m
+pod/fortio-rollout-test-dw7kv      0/1     Completed   0          4h28m
+pod/redis-64f5c6b854-9tx5x         1/1     Running     0          152m
+pod/worker-868b79954c-9l9mg        1/1     Running     0          55m
+
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/api     ClusterIP   10.96.106.230   <none>        8080/TCP   27h
+service/redis   ClusterIP   10.96.108.171   <none>        6379/TCP   152m

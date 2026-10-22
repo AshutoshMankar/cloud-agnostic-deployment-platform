@@ -1,0 +1,4 @@
+NAME                                 READY   STATUS    RESTARTS      AGE
+api-858998c45b-hg6w9                 1/1     Running   0             12m
+api-858998c45b-vqz7s                 1/1     Running   1 (11m ago)   13m
+worker-placeholder-cd7b8986f-mlsdn   1/1     Running   0             146m

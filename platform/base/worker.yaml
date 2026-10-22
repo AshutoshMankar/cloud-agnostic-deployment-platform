@@ -1,0 +1,40 @@
+# PLACEHOLDER ONLY: not connected to Redis and does not process real jobs.
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  namespace: platform-poc
+  labels:
+    app.kubernetes.io/name: worker
+    app.kubernetes.io/part-of: deployment-platform-poc
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: worker
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: worker
+          image: cap-worker:1.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REDIS_HOST
+              value: redis
+            - name: QUEUE_NAME
+              value: jobs
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

@@ -1,0 +1,21 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+.env
+.env.*
+!.env.example
+kubeconfig*
+evidence/*.log
+evidence/*.json
+evidence/*.txt
+!evidence/README.md
+
+# Keep test evidence in version control
+!evidence/*.txt
+# Local temporary test outputs
+/jobs.txt
+/wide
+/fortio-resource-check-results.txt
+/platform-status.txt
+/worker-batch-results.txt
