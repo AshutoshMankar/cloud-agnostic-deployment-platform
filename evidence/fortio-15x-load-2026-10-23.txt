@@ -1,0 +1,17 @@
+﻿# Final 15x Load-Test Attempt
+
+Observed: 2026-10-23 07:46 UTC
+Git commit at evidence capture: 591b2fc795c756f4744c47fd3356d5752c95e2cd
+Kubernetes context: kind-cap-platform
+Environment: Local single-node Kind cluster
+Endpoint: http://api.platform-poc.svc.cluster.local:8080/readyz
+Command: fortio load -c 200 -qps 2250 -t 30s
+Target throughput: 2250 QPS
+Actual throughput: 2049.8 QPS
+Measured requests: 61959
+HTTP 200 responses: 100%
+Reported average latency: 89.621 ms
+Pod status after test: Completed
+
+Result: All measured requests returned HTTP 200. Target throughput was not achieved.
+Limitation: Local test environment; this does not establish production capacity or production SLO compliance.
