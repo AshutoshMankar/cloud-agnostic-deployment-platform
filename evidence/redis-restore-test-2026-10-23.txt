@@ -1,0 +1,19 @@
+﻿# Redis Backup and Restore Test
+
+Date: 2026-10-23
+Environment: Local single-node Kind cluster
+Namespace: platform-poc
+
+1. Started an isolated Redis source pod.
+2. Inserted test key:
+   restore-test-key = backup-restore-success
+3. Created a Redis snapshot using SAVE.
+4. Exported /data/dump.rdb to evidence/redis-backup-test.rdb.
+5. Copied the snapshot into a separate Redis target pod.
+6. Started Redis on port 6380 using the copied snapshot.
+7. Queried restore-test-key on the restored instance.
+
+Observed result: backup-restore-success
+Outcome: PASS  snapshot restore verified for the test key.
+
+Limitations: This was an isolated local Redis snapshot test. It does not validate production backup retention, persistent storage, disaster recovery, or PostgreSQL restore.
