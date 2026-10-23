@@ -1,0 +1,17 @@
+﻿CAP ZERO-DOWNTIME - Fortio Internal Smoke Test
+Date: 2026-10-23
+Cluster: kind-cap-platform
+Namespace: platform-poc
+Target: http://api:8080
+Command: kubectl run fortio-test --rm -i --restart=Never --image=fortio/fortio:latest -n platform-poc -- load -c 2 -qps 10 -t 10s http://api:8080
+Duration: 10 seconds
+Concurrency: 2
+Configured rate: 10 QPS
+Achieved rate: 9.997 QPS
+Total requests: 100
+HTTP 200: 100 (100%)
+Reported errors: 0
+Average latency: 3.125 ms
+p99 latency: approximately 60.464 ms
+Purpose: In-cluster Service connectivity and smoke-load validation
+Limitations: Short local test; not a production capacity or SLO test
