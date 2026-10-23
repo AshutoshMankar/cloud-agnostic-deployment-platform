@@ -1,0 +1,25 @@
+﻿CAP ZERO-DOWNTIME - Rolling Update Under Load
+Date: 2026-10-23
+Cluster: kind-cap-platform
+Namespace: platform-poc
+Application: Mock API fixture
+Target: http://api:8080
+Test tool: Fortio 1.76.0
+Load: 150 QPS for 60 seconds
+Concurrency: 20
+Target requests: 9000
+Completed requests: 9000
+HTTP 200: 9000 (100%)
+Reported Fortio error cases: None
+Achieved throughput: 149.987 QPS
+Average latency: 3.161 ms
+p99 latency: approximately 16.25 ms
+p99.9 latency: approximately 56.67 ms
+Deployment rollout: Successful
+Final API replicas: 4/4 available
+Rollout method: Kubernetes RollingUpdate
+maxUnavailable: 0
+maxSurge: 1
+Observed caveat: Fortio logged EOF socket messages during the test; final summary reported 9000 HTTP 200 responses and no error cases.
+Purpose: Validate API Service behavior during a rolling Deployment update.
+Limitations: Single-node local Kind cluster and mock API; this is not production SLO evidence or a 15x peak-load test.
