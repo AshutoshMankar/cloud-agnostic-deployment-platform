@@ -1,0 +1,27 @@
+﻿# Kubernetes Deployment Rollback Test
+
+Date: 2026-10-23
+Observed completion: 07:58:57 UTC
+Commit at evidence capture: d96f7b93c0c41a2084a8384c5ebcb18ecfedf256
+Kubernetes context: kind-cap-platform
+Namespace: platform-poc
+Deployment: rollback-demo
+
+1. Created deployment with nginx:1.27-alpine.
+   Result: Initial rollout succeeded.
+
+2. Set image to nginx:this-tag-does-not-exist.
+   Result: Rollout timed out after 35 seconds, as expected.
+
+3. Ran kubectl rollout undo deployment/rollback-demo.
+   Result: Deployment rolled back successfully.
+
+4. Verified rollout status.
+   Result: Deployment successfully rolled out.
+
+5. Verified final deployment.
+   Result: READY 1/1, UP-TO-DATE 1, AVAILABLE 1.
+   Final image: nginx:1.27-alpine
+
+Conclusion: PASS. Manual Kubernetes Deployment rollback recovered from a bad image update.
+Limitations: Disposable single-node Kind environment. This does not prove automated canary analysis, SLO-based rollback, or production recovery.
